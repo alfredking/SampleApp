@@ -7,8 +7,17 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
-
+#import "GTNewsViewController.h"
+#import "GTVideoViewController.h"
+#import "GTRecommandViewController.h"
+#import "GTSplashView.h"
+#import "GTStaticTest.h"
+#import "GTMineViewController.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <GTFramework/GTFrameworkTest.h>
+#include <execinfo.h>
+#import "GTLocation.h"
+#import "GTNotification.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -22,41 +31,53 @@
     
     UITabBarController *tabbarController = [[UITabBarController alloc]init];
     
-    ViewController *viewController = [[ViewController alloc] init];
+    GTNewsViewController *newsViewController = [[GTNewsViewController alloc] init];
+    
+    
     
     
     
     
 //    UIViewController *controller1 =[[UIViewController alloc]init];
 //    controller1.view.backgroundColor = [UIColor redColor];
-    viewController.tabBarItem.title = @"新闻";
-    viewController.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/page@2x.png"];
-    viewController.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/page_selected@2x.png"];
+    newsViewController.tabBarItem.title = @"新闻";
+    newsViewController.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/page@2x.png"];
+    newsViewController.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/page_selected@2x.png"];
     
-    UIViewController *controller2 =[[UIViewController alloc]init];
-    controller2.view.backgroundColor = [UIColor yellowColor];
-    controller2.tabBarItem.title = @"视频";
-    controller2.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/video@2x.png"];
-    controller2.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/video_selected@2x.png"];
+    GTVideoViewController *videoController =[[GTVideoViewController alloc]init];
+    GTRecommandViewController *recommandController = [[GTRecommandViewController alloc]init];
     
     
-    UIViewController *controller3 =[[UIViewController alloc]init];
-    controller3.view.backgroundColor = [UIColor greenColor];
-    controller3.tabBarItem.title = @"推荐";
-    controller3.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/like@2x.png"];
-    controller3.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/like_selected@2x.png"];
+    GTMineViewController *mineViewController =[[GTMineViewController alloc]init];
     
-    UIViewController *controller4 =[[UIViewController alloc]init];
-    controller4.view.backgroundColor = [UIColor lightGrayColor];
-    controller4.tabBarItem.title = @"我的";
-    controller4.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/home@2x.png"];
-    controller4.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/home_selected@2x.png"];
-    
-    [tabbarController setViewControllers:@[viewController,controller2,controller3,controller4]];
+    [tabbarController setViewControllers:@[newsViewController,videoController,recommandController,mineViewController]];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:tabbarController];
     tabbarController.delegate = self;
     self.window.rootViewController =navigationController;
     [self.window makeKeyAndVisible];
+    
+    [self.window addSubview:({
+        GTSplashView *splashView= [[GTSplashView alloc]initWithFrame:self.window.bounds];
+        splashView;
+    })];
+    
+    //static
+   // [[GTStaticTest alloc]init];
+    
+    //framework
+    //[[GTFrameworkTest alloc]init];
+//    [self _caughtException];
+//    [@[].mutableCopy addObject:nil];
+    [[GTLocation locationManager] checkLocationAuthorization];
+    [[GTNotification notificationManager]  checkNotificationAuthorization];
+    //隐藏通知数字
+    //[UIApplication sharedApplication].applicationIconBadgeNumber=0;
+    
+    NSUserDefaults *userDefault= [[NSUserDefaults alloc]initWithSuiteName:@"group.com.cmcc.sample"];
+    
+    [userDefault setObject:@"从0开发一款iOS app" forKey:@"title"];
+    
+    
     return YES;
 }
 
@@ -90,5 +111,79 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark -  注册通知
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken");
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    
+}
+#pragma mark
+
+-(BOOL)application:(UIApplication *)app openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    return [TencentOAuth HandleOpenURL:url];
+
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [TencentOAuth HandleOpenURL:url];
+}
+
+
+
+#pragma mark -crash
+
+-(void)_caughtException
+{
+    //nsexception
+    NSSetUncaughtExceptionHandler(HandleNSException);
+    
+    //signal
+    signal(SIGABRT, SignalExceptionHandler); //注册需要监听的信号量，传入处理函数
+    signal(SIGILL, SignalExceptionHandler);
+    signal(SIGSEGV, SignalExceptionHandler);
+    signal(SIGFPE, SignalExceptionHandler);
+    signal(SIGBUS, SignalExceptionHandler);
+    signal(SIGABRT, SignalExceptionHandler);
+}
+
+void SignalExceptionHandler(int signal)
+{
+    void* callstack[128];
+    int frames = backtrace(callstack,128);
+    char **strs = backtrace_symbols(callstack,frames);
+    NSMutableArray *backtrace = [NSMutableArray arrayWithCapacity:frames];
+    for (int i =0; i<frames; i++)
+    {
+        [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
+    }
+    free(strs);
+    
+}
+
+void HandleNSException(NSException *exception)
+{
+    __unused NSString *reason  =[exception reason];
+    __unused NSString *name  =[exception name];
+    
+    //存储crash信息
+}
+
+
+#pragma mark -动态切换图标
+
+-(void)_changeIcon
+{
+    if ([UIApplication sharedApplication].supportsAlternateIcons)
+    {
+        [[UIApplication sharedApplication] setAlternateIconName:@"test" completionHandler:^(NSError * _Nullable error) {
+            NSLog(@"");
+        }];
+    }
+}
 @end
