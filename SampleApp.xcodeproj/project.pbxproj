@@ -41,6 +41,10 @@
 		8AF1A7B722F5C88300E9E0C3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF1A78D22EB036500E9E0C3 /* TencentOpenAPI.framework */; };
 		8AF1A7C922F6C02500E9E0C3 /* GTSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1A7C822F6C02500E9E0C3 /* GTSearchBar.m */; };
 		8AF1A7CC22F6EF8800E9E0C3 /* GTCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1A7CB22F6EF8800E9E0C3 /* GTCommentManager.m */; };
+		8AF1A7D322FB185E00E9E0C3 /* GTRecommendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1A7D222FB185E00E9E0C3 /* GTRecommendDetailViewController.m */; };
+		8AF1A7D622FB188900E9E0C3 /* GTRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1A7D522FB188900E9E0C3 /* GTRecommendCell.m */; };
+		8AF1A7D922FB18BA00E9E0C3 /* GTRecommendSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1A7D822FB18BA00E9E0C3 /* GTRecommendSectionController.m */; };
+		8AF1A7DC22FB18DD00E9E0C3 /* GTRecommendTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1A7DB22FB18DD00E9E0C3 /* GTRecommendTestViewController.m */; };
 		E09935293077402809102EAC /* libPods-SampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6821D69AF6C7C0F85564B6F2 /* libPods-SampleApp.a */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +146,14 @@
 		8AF1A7C822F6C02500E9E0C3 /* GTSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTSearchBar.m; sourceTree = "<group>"; };
 		8AF1A7CA22F6EF8800E9E0C3 /* GTCommentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCommentManager.h; sourceTree = "<group>"; };
 		8AF1A7CB22F6EF8800E9E0C3 /* GTCommentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTCommentManager.m; sourceTree = "<group>"; };
+		8AF1A7D122FB185E00E9E0C3 /* GTRecommendDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRecommendDetailViewController.h; sourceTree = "<group>"; };
+		8AF1A7D222FB185E00E9E0C3 /* GTRecommendDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTRecommendDetailViewController.m; sourceTree = "<group>"; };
+		8AF1A7D422FB188900E9E0C3 /* GTRecommendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRecommendCell.h; sourceTree = "<group>"; };
+		8AF1A7D522FB188900E9E0C3 /* GTRecommendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTRecommendCell.m; sourceTree = "<group>"; };
+		8AF1A7D722FB18BA00E9E0C3 /* GTRecommendSectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRecommendSectionController.h; sourceTree = "<group>"; };
+		8AF1A7D822FB18BA00E9E0C3 /* GTRecommendSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTRecommendSectionController.m; sourceTree = "<group>"; };
+		8AF1A7DA22FB18DD00E9E0C3 /* GTRecommendTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRecommendTestViewController.h; sourceTree = "<group>"; };
+		8AF1A7DB22FB18DD00E9E0C3 /* GTRecommendTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTRecommendTestViewController.m; sourceTree = "<group>"; };
 		91BB262097805832FCF13AC2 /* Pods-SampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleApp.release.xcconfig"; path = "Target Support Files/Pods-SampleApp/Pods-SampleApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,6 +271,7 @@
 		8AE68F662273F67D00DED9E1 /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				8AF1A7CE22FB179A00E9E0C3 /* RecommendController */,
 				8AF1A7B822F5C98400E9E0C3 /* SampleApp.entitlements */,
 				8AF1A7A022F5993200E9E0C3 /* AlternateIcons */,
 				8AF1A78622EAD0E300E9E0C3 /* GTMineViewController */,
@@ -271,8 +284,6 @@
 				8AE68F702273F68000DED9E1 /* Assets.xcassets */,
 				8AE68F752273F68000DED9E1 /* Info.plist */,
 				8AE68F762273F68000DED9E1 /* main.m */,
-				8A817380228C30450051ADB1 /* GTRecommandViewController.h */,
-				8A817381228C30450051ADB1 /* GTRecommandViewController.m */,
 				8AF1A71F22E8225C00E9E0C3 /* GTScreen.h */,
 				8AF1A72022E8225C00E9E0C3 /* GTScreen.m */,
 				8AF1A72222E8833B00E9E0C3 /* GTSplashView.h */,
@@ -341,6 +352,39 @@
 				8AF1A7AF22F5C2AD00E9E0C3 /* Info.plist */,
 			);
 			path = GTToday;
+			sourceTree = "<group>";
+		};
+		8AF1A7CE22FB179A00E9E0C3 /* RecommendController */ = {
+			isa = PBXGroup;
+			children = (
+				8AF1A7D022FB180400E9E0C3 /* Detail */,
+				8AF1A7CF22FB17F600E9E0C3 /* List */,
+			);
+			path = RecommendController;
+			sourceTree = "<group>";
+		};
+		8AF1A7CF22FB17F600E9E0C3 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				8A817380228C30450051ADB1 /* GTRecommandViewController.h */,
+				8AF1A7DA22FB18DD00E9E0C3 /* GTRecommendTestViewController.h */,
+				8AF1A7DB22FB18DD00E9E0C3 /* GTRecommendTestViewController.m */,
+				8A817381228C30450051ADB1 /* GTRecommandViewController.m */,
+				8AF1A7D422FB188900E9E0C3 /* GTRecommendCell.h */,
+				8AF1A7D522FB188900E9E0C3 /* GTRecommendCell.m */,
+				8AF1A7D722FB18BA00E9E0C3 /* GTRecommendSectionController.h */,
+				8AF1A7D822FB18BA00E9E0C3 /* GTRecommendSectionController.m */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		8AF1A7D022FB180400E9E0C3 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8AF1A7D122FB185E00E9E0C3 /* GTRecommendDetailViewController.h */,
+				8AF1A7D222FB185E00E9E0C3 /* GTRecommendDetailViewController.m */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		C7796D6C1FA5F4C4BA8D8018 /* Pods */ = {
@@ -490,6 +534,7 @@
 			files = (
 				8AF1A72122E8225C00E9E0C3 /* GTScreen.m in Sources */,
 				8AE68F6C2273F67D00DED9E1 /* GTNewsViewController.m in Sources */,
+				8AF1A7DC22FB18DD00E9E0C3 /* GTRecommendTestViewController.m in Sources */,
 				8AF1A71822E6FF0500E9E0C3 /* GTVideoPlayer.m in Sources */,
 				8AF1A71E22E74A2900E9E0C3 /* GTVideoToolbar.m in Sources */,
 				8A817382228C30450051ADB1 /* GTRecommandViewController.m in Sources */,
@@ -497,14 +542,17 @@
 				8AF1A79522EC51DB00E9E0C3 /* GTLocation.m in Sources */,
 				8A8DF19A22D3474700B415E0 /* GTListItem.m in Sources */,
 				8AF1A74922E97F2E00E9E0C3 /* GTMediator.m in Sources */,
+				8AF1A7D622FB188900E9E0C3 /* GTRecommendCell.m in Sources */,
 				8AF1A78C22EAE02000E9E0C3 /* GTLogin.m in Sources */,
 				8AF1A71522DEE55000E9E0C3 /* GTVideoCoverView.m in Sources */,
+				8AF1A7D922FB18BA00E9E0C3 /* GTRecommendSectionController.m in Sources */,
 				8A817385228F0AD90051ADB1 /* GTNormalTableViewCell.m in Sources */,
 				8A822CF822C72CE700FA8641 /* GTListLoader.m in Sources */,
 				8AF1A79F22F5555700E9E0C3 /* GTNotification.m in Sources */,
 				8AF1A72422E8833B00E9E0C3 /* GTSplashView.m in Sources */,
 				8AF1A7C922F6C02500E9E0C3 /* GTSearchBar.m in Sources */,
 				8AF1A7CC22F6EF8800E9E0C3 /* GTCommentManager.m in Sources */,
+				8AF1A7D322FB185E00E9E0C3 /* GTRecommendDetailViewController.m in Sources */,
 				8A91416822BE21C700CAB3DD /* GTDetailViewController.m in Sources */,
 				8AE68F692273F67D00DED9E1 /* AppDelegate.m in Sources */,
 				8AF1A78922EAD14B00E9E0C3 /* GTMineViewController.m in Sources */,

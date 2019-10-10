@@ -30,7 +30,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    
+
+//同一组当中，行与行之间的最小行间距，但是不同组之间的不同行cell不受这个值影响。
     flowLayout.minimumLineSpacing = 10;
+    //同一行的cell中互相之间的最小间隔，设置这个值之后，那么cell与cell之间至少为这个值
     flowLayout.minimumInteritemSpacing = 10;
     //flowLayout.itemSize = CGSizeMake((self.view.frame.size.width-30)/2, 300);
     flowLayout.itemSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width/16*9+GTVideoToolbarHeight);

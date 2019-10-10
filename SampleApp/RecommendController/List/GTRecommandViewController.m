@@ -94,16 +94,84 @@
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView     // called when scroll view grinds to a halt
 {
-    
-}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
+
+//待git源代码更新再补充
+//@interface GTRecommandViewController ()<IGListAdapterDelegate   ,IGListAdapterDataSource>
+//
+//@property(nonatomic,strong,readwrite)IGListCollectionView *collectionView;
+//@property(nonatomic,strong,readwrite)IGListAdapter *adapter;
+//
+//@end
+//
+//@implementation GTRecommandViewController
+//
+//-(instancetype)init
+//{
+//    self = [super init];
+//    if (self)
+//    {
+//
+//        self.tabBarItem.title = @"推荐";
+//        self.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/like@2x.png"];
+//        self.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/like_selected@2x.png"];
+//    }
+//    return self;
+//}
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    // Do any additional setup after loading the view.
+//    self.view.backgroundColor = [UIColor whiteColor];
+//
+//    IGListAdapterUpdater *updater = [[IGListAdapterUpdater alloc]init];
+//
+//    _adapter = [[IGListAdapter alloc]initWithUpdater:updater viewController:self workingRangeSize:0];
+//    _adapter.collectionView = _collectionView;
+//    _adapter.delegate = self;
+//    _adapter.dataSource =self;
+//
+//
+//    [self.view addSubview:({
+//
+//        IGListCollectionViewLayout *layout = [[IGListCollectionViewLayout alloc]initWithStickyHeaders:NO topContentInset:0 stretchToEdge:YES];
+//        _collectionView = [[IGListCollectionView alloc]initWithFrame:self.view.bounds listCollectionViewLayout:layout];
+//        _collectionView.backgroundColor = [UIColor whiteColor];
+//        _collectionView;
+//    })];
+//
+//    [_adapter reloadDataWithCompletion:nil];
+//}
+//
+//#pragma mark -IGListAdapterDataSource
+//
+//
+//- (NSArray<id <IGListDiffable>> *)objectsForListAdapter:(IGListAdapter *)listAdapter
+//{
+//    return @[@"1",@"2",@"3",@"4",@"5"];
+//}
+//
+//- (IGListSectionController *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object
+//{
+//
+//    return [[GTRecommendSectionController alloc]init];
+//}
+//
+//
+//- (nullable UIView *)emptyViewForListAdapter:(IGListAdapter *)listAdapter
+//{
+//    return nil;
+//
+//}
+//
+//
+//- (void)listAdapter:(IGListAdapter *)listAdapter willDisplayObject:(id)object atIndex:(NSInteger)index
+//{
+//
+//}
+//- (void)listAdapter:(IGListAdapter *)listAdapter didEndDisplayingObject:(id)object atIndex:(NSInteger)index
+//{
+//
+//}
 @end

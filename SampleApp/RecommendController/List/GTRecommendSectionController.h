@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <IGListKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GTRecommendSectionController : UIViewController
+@interface GTRecommendSectionController : IGListSectionController
 
 @end
 
